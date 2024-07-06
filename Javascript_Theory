@@ -1,0 +1,1953 @@
+RS5(2009) ==> ES6(2015)
+ECMA-262 ==> ECMAScript
+
+#########
+TO INCLUDE JS FILE
+
+>>IN HTML
+<script src = "path_name(foldername/filename)"></script>
+
+<script async src ="path_name"></script>
+->async: the HTML loads the JS file as it reads the document
+-> by default Html works like this so no need of writing
+
+<script defer src ="path_name"></script>
+->defer: when you want the JS file to download after the html file is read
+
+
+#########
+TO PRINT
+
+-> alert("....");
+->document.getElementById("----id of the tag----");
+
+-> prompt() - shows a message, input text. It returns the text on ok or if cancel button or esc is clicked, null
+
+-> confirm() - shows a message. confirm with "ok" or "cancel"....returns boolean value ..ok means true ..cancel is false
+->innerHTML = ("---text to be printed---");
+
+->document.write("---text to be printed---");
+--> u can write html tags in document.write()
+
+->console.log("---text to be printed---");
+
+
+
+########
+VARIABLES
+>> Keyword : var , let
+ex => var Neha;  => const Neha = 3; => let y = 'hi';     => let x = "hell'o";    => let y = 'hell"o'
+   => let x = ["neha","ragesh"];
+
+########
+OBJECTS
+
+let man = {name:"neha", neha:20}
+
+=> to check the datatype use typeof
+
+=>let x = "neha";
+alert('hello ${x});       ---------$ this is called as template literal (quilt)
+
+=> !(6==5) -return true-negation
+
+#########
+TERNORY OPERATORS
+
+let option = isLoggedin == 1?"logout":"login"
+                                |        |
+                                true    false
+                                
+=> let user;
+alert(user ?? "Guest");               --------If the variable user is defined then it will return tha value else it will print guest
+
+
+#########
+LOOPS
+
+to come out of the nested loops give name to the loop
+outer: for(int i =1;i<=10;i++){
+    for(int j =1;j<3;j++){
+        break outer;
+    }
+}
+
+
+-> for any iterable things like array or string 
+let arr = [1,2,3];
+let str = "neha";
+
+for(let x in arr){
+    console.log(arr[x]);
+}
+
+
+for(let x in str){
+    console.log(str[x]);
+}
+
+
+##############
+alert() => shows a mssg 
+
+prompt()=> shows a mssg, input text. It returns text on OK. If cancel button or esc is clicked, null
+
+confirm()=> shows a mssg, confirm wih "OK" or "cancel". It returns true for OK and false for cancel/Esc
+
+// template literal lagane se joh jaisa likha hai waisa hi hoga
+
+let str = ` hello
+
+
+kidhar ho`;
+
+console.log(str);
+
+let name = "neha";
+console.log(`my name is ${name}.`);
+
+
+
+############
+TYPE CONVERSIONS
+
+let neha = 5 + null
+so JS automatically assigns null as 0 and doesn't show error
+
+let neha = "5" + null
+the output will be 5null
+
+let neha = "5" + 2   here it returns 52....as '+' sign also acts as concatenation
+let neha = "5" - 2  here it returns 3
+let neha = "5" * "2" ...here it returns 10
+let neha = "5" * "yes" ...here it returns NaN...not a number
+
+
+-> functions to convert
+
+typeof()....koi bhi variable ka type nikalne ke liye
+
+1. String()
+2. Boolean()
+3. Number()
+
+-> agar boolean ko number mein convert kiya to true ka 1 karega aur false ka 0
+-> 0 ke alawa koi bhi number ko boolean mein convert karne ke baad 1 hi return hoga
+-> blank string ke alawa baaki boolean 1....."" means 0 in boolean
+
+########################
+STRING MANIPULATIONS
+
+-> JS is case sensitive
+-> dusre line mein print karne ke liye..... \n
+-> tab \t
+-> \ is a special character so to print a special character uske peeche ke \ lagado....console.log("neha \\ ragesh");.....console.log("neha \" ragesh");
+-> length of string.....string_variable.length
+-> to fetch the nth character...str[n-1]
+-> to concat .......str1+str2.........str1.concat(str2)....to concat multiple strings....str1.concat(str2,str3,str4)
+-> substring....str.substr(index1,index2)
+->str.indexOf("word",starting search index)
+->str.lastIndexOf()
+-> replace(), toUpperCase(),toLowerCase(),includes()
+
+
+
+####################
+ARRAYS
+let neha = ["neha","ragesh","nambiar"]
+
+//length nikalne  ke liye...array_name.length
+
+// to add elements.......array_name.push("element")..this adds to the last of the array
+//adding to first position of the array.........array.unshift("element")
+
+// to remove from last.......array_name.pop()
+//removing from first position of the array.........array.shift()
+// removing n numbers starting from an index number i...........array_name.splice(i,n)
+
+
+// emptying an array..........array_name=[] or array_name.length = 0
+
+//array_name.indexOf("")....you can apply all the string functions as string can be considered as an array of characters
+
+// to check if a variable is of type array......Array.isArray("variable_name")
+
+// splitting sentence into words
+let sentence = "tHis is a sentence";
+console.log(sentence.split(" "));
+
+// to join the array elements by space or any character
+console.log(neha.join("&"));
+
+// joining 2 or more arrays
+array1.concat(array2,array3)
+
+// multi-D array
+let arr = [[1,2,3],[1,2,5]]
+
+
+// to traverse through the array
+step1 : using for loop
+step 2: 
+
+neha.forEach(myfunc);
+
+function myfunc(value){
+    console.log(value);
+}
+
+-> spread operator(,...) used to copy arrays into 1 another
+
+let arr1 = [1,2,3];
+let arr2 = [4,5,6];
+
+console.log(arr1,...arr2);
+
+###############
+ARGUMENTS OBJECTS
+-> to create a function when the arguments inside a function can be dynamic
+function add(){
+    arguments
+    // this is an array type object
+    console.log(arguments[1]);
+    // this will print 8 as the arguments we pass will get stored in the arguments array
+}
+
+add(7,8,6);
+
+
+#################
+DEFAULT PARAMETERS IN FUNCTIONS
+function talk(msg = "HI"){
+   return msg;
+}
+-> multiple default parameters can also be given
+
+
+function talk(...args){
+   console.log(args);
+}
+-> yeh ... is called as rest parameter agar dynamic parameters pass karna ho toh
+
+
+
+###############
+ANONYMOUS FUNCTIONS
+
+=> we can assign function to some variables and is called as function expression
+
+let show = function(){
+    console.log("hello");
+};
+
+show();
+
+=> setTimeout(function_name,time in milliseconds)
+
+
+##############
+IMMEDIATELY INVOKED FUNCTION
+
+-> normally any anonymous function can be called by assigning it to some variable
+-> we can immediately call an anonymous function by
+-> function ko bracket() mein band kardo aur last meiin () bhi lagado
+   (function (){
+     console.log("hello world");
+     alert("hello world");
+   })();
+   
+-> global space occupies more space so its better to have a temporary memory space
+
+-> suppose you are using multiple scripts in ur HTML file consisting of same variable or function name then we can make one of the file's variable as local one by converting it
+   as a immediately invoked function
+    ex ==>
+        (function (){
+          let msg = "hello";
+          function show(){
+             console.log(msg);
+            }
+          show();
+         })();
+
+
+###############
+OBJECTS
+
+let person = {
+  first_name : 'neha',
+  last_name : 'nambiar',
+  age : 20
+ };
+ 
+ console.log(person.age);   or   console.log(person['age']);
+ console.log(person.first_name);   or   console.log(person['fisrt_name']);
+
+=> if you want a space in between properties like first name instead of first_name
+then include it within commas ''
+
+ex 
+let person = {
+  'first name' : 'neha',
+  'last name' : 'nambiar',         //you cannot use dot notation in this case so only array notation can be used
+  age : 20
+ };
+
+-> any property which is not defined gives "undefined" as output
+-> to view the entire object  --  console.log(__ object name __ );
+-> to delete any property .............delete person.first_name
+-> to check if any property is present in the object...........person.height(returns undefined if not present)....or.........'height' in person(returns true or false)
+
+-> to iterate through properties and values
+for(let key in person){
+   console.log(key + person.key);
+}
+
+
+################
+METHODS
+let person = {
+    first_name : 'neha',
+    last_name : 'nambiar',
+    age : 20
+   };
+
+   // method -1
+   person.sayHello = function (){
+    console.log("hello");
+   }
+
+   person.sayHello();
+
+   //method-2
+
+   function greet(){
+    console.log("Hi");
+   }
+
+   person.sayHello = greet;
+
+   //method - 3
+   let person = {
+    first_name : 'neha',
+    last_name : 'nambiar',
+    age : 20
+    sayHello : function(){
+        console.log("hi");
+    }
+   };
+
+   //method - 4
+   let person = {
+    first_name : 'neha',
+    last_name : 'nambiar',
+    age : 20
+    sayHello (){
+        console.log("hi");
+    }
+   };
+   
+ -> MATH.PI, MATH.E, Math.round(),Math.ceil(), Math.floor(), Math.trunc(), Math.pow(), Math.sqrt(), Math.min() Math.max(), Math.random()
+ -> to generate random number between 25 and 15..........(Math.floor(Math.random() * (25-15)) + 15
+
+to exclude the min and max nos also
+function min_max(min,max){
+    return (Math.floor(Math.random()*(max-min)))+min;
+}
+
+to include the min and max nos also
+ function min_max(min,max){
+    return (Math.floor(Math.random()*(max-min+1)))+min;
+}
+
+
+#####################
+DATE OBJECT
+let x = new Date(2023,10,13,1,2,3,5);
+// this stores the present system date new Date()
+// month numbering starts with 0..............7 parameters inside Date()
+// year, month, date, hour, minute, sec, msec............give year and month
+
+let y = new Date("october 13 2018 11:12:22");
+// the date can be inputed in any format lekin ...new Date() karne se format constant kar dega JS
+
+
+//Methods of dates
+y.getTime();       //millisecond mein aayega
+y.getFullYear();      y.getMilliseconds();
+y.getMonth();         y.getDay();
+y.getDate();          y.getHours();
+y.getMinutes();
+
+-> same function mein get ki jagah set bhi use kar sakte hai
+
+-> days also starts from 0....sunday 0 hai aur saturday 6
+
+
+###################
+GETTERS AND SETTERS
+let person = {
+    firstname : "neha",
+    lastname : "ragesh",
+    age : 21,
+    getName : function(){
+        return this.firstname.toUpperCase();
+    }
+};
+
+let person = {
+    firstname : "neha",
+    lastname : "ragesh",
+    age : 21,
+    get getName(){
+        return this.firstname.toUpperCase();
+    },
+
+    set setName(n){
+        this.name = n.toUpperCase();  // setter mein ek parameter zaroor se pass karna hota hai
+    }
+};
+
+
+####################
+OBJECT CONSTRUCTOR
+function Student(firstname,lastname,age){
+    this.FN = firstname;
+    this.LN = lastname;
+    this.age = age;
+}
+
+let student1 = new Student("neha","ragesh",21);
+console.log(student1.age);
+
+// to add a property or methods to the constructor............prototype likhna imp hai constructor ke naam ke aage
+Student.prototype.nationality = "Indian";
+
+Student,prototye.name = function(){
+        return FN + " " + LN;
+}
+
+#####################
+HOISTING
+-> to hoist means to lift or pull
+'var' mein koi variable ko declare karke value assign nahi kiya toh JS by default undefined kar deta hai without throwing erroe
+'let' mein aisa nahi hai....
+JS khud variable declare kar deta hai...x=4 likhne pe no error....isiliye JS mein upar "use strict" likhne se error throw karega
+
+
+#####################
+DOM : Document Object Model...............API for manipulating HTML and XML............document is the root node
+BOM : Browser Object Model
+
+-> toh koi bhi tag ko through ID se call karna ho write document.getElementByID()
+-> getElementById
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            player
+        </title>
+    </head>
+
+    <body>
+
+        <!-- <script src =player.js></script> -->
+        <ul id = "list">
+            <li>list1</li>
+            <li id = "random">list2</li>
+            <li>list3</li>
+            <li>list4</li>
+            <li>list5</li>
+        </ul>
+
+        <script>
+            let record = document.getElementById("random");
+            record.innerHTML;  //<!--to get the value of that tag...this will return list2-->
+            record.innerHTML = "list8"; 
+        </script>
+       
+    </body>
+</html>
+
+
+-> selecting through class
+->getElementsByClassName
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            player
+        </title>
+    </head>
+
+    <body>
+
+        <!-- <script src =player.js></script> -->
+        <ul id = "list">
+            <li class = "c1">list1</li>
+            <li class = "c1">list2</li>
+            <li>list3</li>
+            <li>list4</li>
+            <li>list5</li>
+        </ul>
+
+        <script>
+            let record = document.getElementsByClassName("c1");
+            // this will store it in an array format known as HTMLCollections
+            for(let i = 0; i <record.length;i++){
+                record[i].innerHTML = "changed";
+            }
+            
+        </script>
+       
+    </body>
+</html>
+
+
+-> Selecting By Tag Name
+->getElementsByTagName
+
+agar koi tag ke andar ka kuch select karna ho toh
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            player
+        </title>
+    </head>
+
+    <body>
+
+        <!-- <script src =player.js></script> -->
+        <ul id = "list">
+            <li class = "c1">list1</li>
+            <li class = "c1">list2</li>
+            <li>list3</li>
+            <li>list4</li>
+            <li>list5</li>
+        </ul>
+
+        <div id = "id1">
+            <h2></h2>
+            <p></p>
+            <h2></h2>
+            <p></p>
+
+        </div>
+
+        <script>
+            let record = document.getElementsByID("id1");
+            let record2 = record.getElementsByTagName("h2");
+            // this will store it in an array format known as HTMLCollections
+            for(let i = 0; i <record.length;i++){
+                record[i].innerHTML = "changed";
+            }
+            
+        </script>
+       
+    </body>
+</html>
+
+
+-> Query Selector
+document.querySelector......returns the first instance
+document.querySelectorAll....returns all the instances matching the criteria
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            player
+        </title>
+    </head>
+
+    <body>
+
+        <!-- <script src =player.js></script> -->
+        <h2 class = "intro">heading</h2>
+
+        <div id = "id1">
+            <h2 class = "intro"></h2>
+            <p class = "intro"></p>
+            <h2></h2>
+            <p class = "intro"></p>
+
+        </div>
+
+        <script>
+            let record = document.querySelectorAll("p.intro");
+            for(let i = 0; i <record.length;i++){
+                record[i].innerHTML = "changed";
+            }
+            
+        </script>
+       
+    </body>
+</html>
+
+
+####################
+TRAVERSING ELEMENTS
+-> sometimes the parent tag doesnt have an id toh iss time pe child ke id se parent tag ko choose karna
+-> child ke pass id hai parent chahiye............parentElement
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            player
+        </title>
+    </head>
+
+    <body>
+        <h2> heading 1</h2>
+        <ul>
+            <li id = "intro">list1</li>
+            <li>list2</li>
+            <li>list3</li>
+            <li>list4</li>
+        </ul>
+
+        <ul>
+            <li>lista</li>
+            <li>listb</li>
+            <li>listc</li>
+            <li>listd</li>
+        </ul>
+
+        <script>
+           let record = document.getElementById("intro");
+           let parent = record.parentElement;
+            
+        </script>
+       
+    </body>
+</html>
+
+-> parent ke pass id hai child chahiye.....firstElementChild, lastElementChild,children, previousElementSibling,nextElementSibling
+multiple cheeze for loop aur innerHTML lagakr change ho jayega
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            player
+        </title>
+    </head>
+
+    <body>
+        <h2> heading 1</h2>
+        <ul id = "intro">
+            <li>list1</li>
+            <li>list2</li>
+            <li>list3</li>
+            <li>list4</li>
+        </ul>
+
+        <ul>
+            <li>lista</li>
+            <li>listb</li>
+            <li>listc</li>
+            <li>listd</li>
+        </ul>
+
+        <script>
+           let record = document.getElementById("intro");
+           let node = record.firstElementChild;
+           let node2 = record.lastElementChild;
+           let node3 = record.children;
+            
+        </script>
+       
+    </body>
+</html>
+
+
+-> innerHTML
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            player
+        </title>
+    </head>
+
+    <body>
+        <div id = "intro">
+            <p>hello</p>
+        </div>
+
+        <script>
+           let record = document.getElementById("intro");
+           let content = record.innerHTML;
+           content = "<h1>this is a heading </h1>";
+        </script>
+       
+    </body>
+</html>
+
+
+#####################
+CREATE AND APPEND AN ELEMENT
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            player
+        </title>
+    </head>
+
+    <body>
+        <div id = "intro">
+            <p>hello</p>
+        </div>
+
+        <script>
+           let record = document.getElementById("intro");
+           //creating an element
+           let content = document.createElement("h1");
+           //adding class or id to the tag
+           content.className = " try pi";
+           content.id = "intro1";
+           //adding text to the created child tag
+           let text = document.createTextNode("this is h1");
+           content.appendChild(text);
+           //second method
+           content.textContent("content added");
+           //appending the child tag
+           record.appendChild();
+           // if the tag has to be added inside the <body> tag
+            document.body.appendChild("content");
+        </script>
+       
+    </body>
+</html>
+
+
+
+-> adding element
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            player
+        </title>
+    </head>
+
+    <body>
+        <ul id = "list">
+            <li>list1</li>
+            <li>list2</li>
+            <li>list3</li>
+            <li>list4</li>
+        </ul>
+
+        <script>
+            // adding list 5
+            let record = document.getElementById("list");
+            let item = document.createElement("li");
+            item.textContent("list5");
+            record.appendChild(item);
+        </script>
+       
+    </body>
+</html>
+
+
+####################
+INSERT BEFORE AN ELEMENT
+
+-> to append at a certain position kyuki normal append toh last mein hi add karta hai
+insertBefore()...this method takes 2 paramters.....item ka name and position
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            player
+        </title>
+    </head>
+
+    <body>
+        <ul id = "list">
+            <li>list1</li>
+            <li>list2</li>
+            <li>list3</li>
+            <li>list4</li>
+        </ul>
+
+        <script>
+            // adding list 5
+            let record = document.getElementById("list");
+            let item = document.createElement("li");
+            item.textContent = "list5";
+            let position = record.firstElementChild;//choses list1
+            let position2 = record.firstElementChild.nextElementSibling; // chooses list 2
+            record.insertBefore(item,pos);
+
+
+            // adding h2 before ui tag
+
+            let parent = document.body;
+            let content = document.createElement("h2");
+            content.textContent = "heading";
+            parent.insertBefore(content,record);
+            
+        </script>
+       
+    </body>
+</html>
+
+
+#####################
+REMOVE CHILD ELEMENT
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            player
+        </title>
+    </head>
+
+    <body>
+        <ul id = "menu">
+            <li>Home</li>
+            <li>Product</li>
+            <li>About us</li>
+        </ul>
+
+        <script>
+            let parent = document.getElementById("menu");
+            let elm = parent.firstElementChild.nextElementSibling;
+            parent.removeChild(elm);
+
+            // to remove the complete <ui>
+            document.body.removeChild(parent);
+        </script>
+       
+    </body>
+</html>
+
+
+####################
+CLONE ELEMENT
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            player
+        </title>
+    </head>
+
+    <body>
+        <ul id = "menu">
+            <li>Home</li>
+            <li>Product</li>
+            <li>About us</li>
+            <li>Contact us</li>
+        </ul>
+
+        <script>
+            let menu = document.getElementById("menu");
+            // true likhne pe parent aur child dono copy hota hai else sirf parent hota hai
+            let clon = menu.cloneNode(true);
+            
+            // appending to the body
+            document.body.appendChild(clon);
+
+            //changing the id of the cloned tag
+            clonn.id = "new menu";
+        </script>
+       
+    </body>
+</html>
+
+
+
+####################
+REPLACE ELEMENT
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            player
+        </title>
+    </head>
+
+    <body>
+        <ul id = "menu">
+            <li>Home</li>
+            <li>Product</li>
+            <li>About us</li>
+            <li>Contact us</li>
+        </ul>
+
+        <script>
+            let menu = document.getElementById("menu");
+            
+            let new_tag = document.createElement("li");
+            new_tag.textContent = "Exit";
+            let rep = menu.firstElementChild.nextElementSibling;
+            menu.replaceChild(rep,new_tag);
+        </script>
+       
+    </body>
+</html>
+
+
+
+####################
+INSERT ADJACENT HTML
+
+-> addition of elements in 4 positions....before beginning, after beginning, before end, after end
+-> beforebegin, afterbegin, beforeend,afterend
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            player
+        </title>
+    </head>
+
+    <body>
+        <div id = "intro">
+            <h2>Heading</h2>
+            <p>This is a p tag</p>
+        </div>
+        
+        <script>
+           let elm = document.getElementById("intro");
+           elm.insertAdjacentHTML('beforebegin',"<h1> New hi </h1>")
+           // this function takes 2 parameters ....pos and tag
+        </script>
+       
+    </body>
+</html>
+
+
+#####################
+FUNCTIONS OF ATTRIBUTES
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            player
+        </title>
+    </head>
+
+    <body>
+        <button id = "btn">Send</button>
+        
+        <script>
+           let btn = document.getElementById("btn");
+           //setting the attribute
+           btn.setAttribute("name","form1");
+
+           //getting the value of the attribute
+           let val = btn.getAttribute("name");
+
+           // remove attribute
+           let val1 = btn.removeAttribute("name");
+
+           //to check if an attribute is present
+           let val2 = btn.hasAttribute("name");
+        </script>
+       
+    </body>
+</html>
+
+
+####################
+INLINE STYLE
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            player
+        </title>
+    </head>
+
+    <body>
+        <button id = "btn">Send</button>
+        
+        <script>
+           let btn = document.getElementById("btn");
+           btn.style.cssText = "background-color:violet; colour:pink;";
+           // write css as u wish
+
+
+           //method - 2
+           btn.setAttribute('style','background-color:white;color:pink;');
+
+        //    method-3 ....style ke aage dot lagakr director property likh do
+           btn.style.color = "red";
+           btn.style.backgroundColor = "white";
+        </script>
+       
+    </body>
+</html>
+
+-> agar mutiple css ka functions include karna hai toh use cssText and use it as cssText += "" if u want no property to be overriden
+
+
+####################
+GET COMPUTED CSS
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            player
+        </title>
+
+        <style>
+            #btn{
+                background-color: red;
+                color : orangered;
+            }
+        </style>
+    </head>
+
+    <body>
+        <button id = "btn">Send</button>
+        
+        <script>
+           let btn = document.getElementById("btn");
+           
+           // to get what all css styling has been apllied
+           let css = getComputedStyle(btn);
+        </script>
+       
+    </body>
+</html>
+
+
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            player
+        </title>
+
+        <style>
+            .color{
+                background-color: grey;
+                color: red;
+            }
+
+            .dim{
+                border: 1px solid red;
+                padding : 100px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id = "box" class="color">
+            <p>This is a dummy text</p>
+        </div>
+        
+        <script>
+           // to see what all classes are present inside a tag
+           let box = document.getElementById("box");
+
+           //to add a class ...make sure ki "" iske andar ek space ke baad naam likho kyuki class ke naam ke beech mein space hota hai
+           box.className += " dim";
+
+           // to get an array of css styles applied
+           console.log(box.classList);
+           
+           // to add in that array
+           box.classList.add("dim");
+           
+           //removing class
+           box.classList.remove(" dim");
+           
+           //replacing..............arg to be passed includes class to be replaced and the new one
+           box.classList.replace("color","dim");
+           
+           // to check if a class is present or not
+           box.classList.contains("dim");
+           
+           // toggle ....agar koi class hai toh hatado nahi hai toh lagado
+           box.classList.toggle("dim");
+
+        </script>
+       
+    </body>
+</html>
+
+
+######################
+WIDTH AND HEIGHT OF ELEMENTS
+
+-> 2 ways....offset and client...offset contains margins,borders and padding.....client just contains padding
+
+elementname.offsetHeight;   or   elementname.clientHeight;
+elementname.offsetWidth;    or   elementname.clientWidth;
+
+
+#######################
+DOM EVENTS
+
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            player
+        </title>
+
+        <style>
+            .color{
+                background-color: grey;
+                color: red;
+            }
+
+            .dim{
+                border: 1px solid red;
+                padding : 100px;
+            }
+        </style>
+    </head>
+
+    <body>
+        //inline events
+        <button id = 'btn' onclick="btnClick()">Click Me!</button>
+        
+        <script>
+            function btnClick(){
+                alert("button was clicked");
+            }
+
+            let record = document.getElementById("btn");
+            record.addEventListener('click',btnClick);
+            // parameters mein event name in '' and function name without ''
+
+            // or u can use anonymous function also
+
+            record.addEventListener('click',function(){
+                alert("btn was clicked");
+            });
+
+            //multiple events on an element is also possible
+
+            record.addEventListener('mouseover',function(){
+                alert("mouse is activated");
+            });
+            record.addEventListener('mouseout',function(){
+                alert("mouse over");
+            });
+
+            //removing events
+            record.removeEventListener('click',btnClick);
+
+        
+        </script>
+       
+    </body>
+</html>
+
+
+
+-> page loader events................DOMContentLoaded and load
+jaise upar click aur mouseover tha waise hi yeh do events hai joh webpage ko load karne mein help karenge
+
+
+-> mouse events..................'onclick' event se left mouse button dabane se activate hoga
+'oncontextmenu' right btn dabane se activate karne ke liye
+'ondblclick'...............double click kare pe activate karne ke liye
+'onmousedown'...'onmouseup'...'onmouseover'.....'onmouseout'..........mouse ka btn dabane ke baad chodne se aisa ho jayega
+
+
+-> keyboard events.............poore windows mein lagane ke liye
+window.addEventListener('keydown',checkKey);
+
+function checkKey(event){
+   console.log(event.key);..................joh joh button bataya hai woh console mein print ho jayega
+}
+
+-> scroll events
+window.addEventListener('scroll',function(){
+   console.log("scrolling");.........upar aur neeche dono scrolling ko capture kar dega
+});
+
+// scrolling up ke liye
+window.addEventListener('wheel',function(event){
+  if(event.deltaY < 0){
+    console.log("up");
+  }
+  else if(event.deltaY > 0){
+    console.log("down");
+  }
+// deltaX horizontal scrolling ke liye...right and left > < 0
+});
+
+//scroll agar koi ek particular pixel value tak karna ho
+window.addEventListener('scroll',function(){
+  if(window.pageYoffset> 150){
+    console.log("up");
+  }
+// pageYoffset horizontal scrolling ke liye
+});
+
+
+-> input events.........form bharte samay detect karne ke liye
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <input type="text" id="myText">
+    </form>
+    <script>
+        let x = document.getElementById("myText");
+        x.addEventListener('focus',func1);.......text box mein koi click kare toh
+        x.addEventListener('blur',func2);
+         x.addEventListener('change',function(){...........change se koi text box mein value change ho toh
+                console.log(this.value);
+         });
+         x.addEventListener('input',function(){
+                console.log("random");............sabh kuch badalne pe detect hoga
+         });
+        
+
+        function func1(){
+            x.style.background="yellow";
+        }
+
+        function func2(){
+            x.style.background="white";
+        }
+        
+        
+
+    
+    </script>
+</body>
+</html>
+
+
+
+-> event bubbling and event capturing
+event bubbling ....an event starts at the most specific element and then flows uoward towards the least specific element(the document or the window)\
+event capturing mein pehle document then the chain continues till you reach elements
+
+addEventListener(event,function,useCapture);
+the default value is false, which will use the bubbling propagation, when the value is set to true, the evnet uses the capturing propagation
+
+button pe click karne se pehle button, then div then body....bubbling ke case mein joh addEventListener ka default settings hai
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            padding: 100px;
+            background-color: cornflowerblue;
+        }
+
+        #myDiv{
+            padding: 50px;
+            background-color: darkblue;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id = "myDiv">
+        <button id="btn">click</button>
+    </div>
+    <script>
+        let d = document.getElementById("myDiv");
+        let b = document.getElementById("btn");
+        b.addEventListener('click',btnClicked);
+        d.addEventListener('click',divClicked);
+        document.body.addEventListener('click',bodyClicked);
+
+        function btnClicked(){
+            console.log("btn");
+        }
+
+        function divClicked(){
+            console.log("div");
+        }
+
+        function bodyClicked(){
+            console.log("body");
+        }
+
+
+    </script>
+</body>
+</html>
+
+//ismein abh capturing hoga....pehle body then div then button
+b.addEventListener('click',btnClicked,true);
+d.addEventListener('click',divClicked,true);
+document.body.addEventListener('click',bodyClicked,true);
+
+//koi bhi propagation rokni ho toh
+function bodyClicked(e){
+     console.log("body");
+     e.stopPropagation();
+}
+
+
+##############################
+PREVENT DEFAULT
+-> joh by default functionality ho agar woh na karwana ho...example...single mouse click ki jagah double mouse click se koi link khulwana ho
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="https://www.google.com" id = "anchor">Click</a>
+
+    <script>
+        let link = document.getElementById("anchor");
+        link.addEventListener('click',function(e){
+            console.log("link clicked");
+            e.preventDefault();
+        });
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form action="" id="myForm">
+        <input type="text">
+        <input type="submit">
+    </form>
+    <script>
+        let form = document.getElementById("myForm");
+        form.addEventListener('submit',function(e){
+            e.preventDefault();
+        });
+    </script>
+</body>
+</html>
+
+
+
+############################
+BROWSER OBJECT MODEL (BOM)
+-> all the global methods pr variables becomes a part of window object...if the variable type is var and not let or const
+-> alert ,confirm aur prompt...matlab koi bhi function joh direct use karte hai woh window object ka part hota hai
+
+// window ka size....inner and outer width and height
+window.innerHeight, window.innerWidth, window.outerHeight, window.outerWidth
+
+// how to open new window...ads ka pop up aisa kuch
+
+<body>
+        <button id = 'btn'>Click Me!</button>
+        <button id = "btn2">Close</button>
+        
+        <script>
+            let record = document.getElementById("btn");
+            let record2 = document.getElementById("btn2");
+            let url = "https://www.google.com";
+            let name = "google";
+            let features = "height=500,width=500";
+            let win;
+            record.addEventListener('click',function(){
+                //parameters inside window.open include url,name and features
+                 wind = window.open(url,name,features);
+            });
+
+            record2.addEventListener('click',function(){
+                wind.close();
+            });
+        </script>
+-> aur features ka list dekhne ke liye google kar lena
+
+
+########################
+TIME OUT AND TIME INTERVAL
+->
+let timeoutID = setTimeout(myFunc,5000);
+function myFunc(){
+  alert("refresh");
+}
+
+//to end the timeoout....koi if else consition ke saath use hoga
+clearTimeout(timeoutID);
+
+-> interval mein cheeze repeat karwana ho
+var t1 = setInterval(fun,2000);
+function fun(){
+  alert("interval");
+}
+
+clearInterval(t1);
+
+
+######################
+LOCATION OBJECT
+
+-> window object ka subobject hai aur use hai ki current page ka address...url ko get karne ya ek url se dusre url mein re-direct karna
+
+<body>
+        <button id = 'btn' onclick = "fun()">Click Me!</button>
+        
+        <script>
+           console.log(window.location.href);
+           //window linkhna imp nahi
+
+           console.log(location.pathname);
+           console.log(location.protocol);
+
+           //4 ways to redirect...window.location, window.location.href and assign and replace method of location
+
+           function fun(){
+            window.location = "https://www.google.com";
+            location.href = "https://www.google.com";
+            location.assign("https://www.google.com");
+            location.replace("https://www.google.com");
+
+            location.reload();  // simply webpage reload karwane
+           }
+           //assign method browser hostory mein store hoga replace wala nahi hoga....matlab replace use karne pe back button nahi milega
+        </script>
+    </body>
+
+
+
+######################
+NAVIGATOR OBJECT
+
+-> to get info about the browser and capabilities of the browser
+
+properties....navigator.appName,  navigator.appVersion,  navigator.appCodeName,  navigator.cookieEnabled, navigator.UserAgent, navigator.platform
+methods.........navigator.javaEnabled()
+
+
+###################
+SCREEN OBJECT
+
+screen.width, screen.height, screen.ColorDepth, screen.orientation
+
+
+#######################
+CALLBACK FUNCTION
+->jabh koi function ko dusre function mein as a parameter paas karna ho
+function sayHello(){
+    console.log("hello");
+}
+function sayHi(){
+    console.log("hi");
+}
+
+function add(a,b,callback){
+    console.log(a+b);
+    callback();
+}
+
+let num1=1;
+let num2=3;
+add(num1,num2,sayHello);........prints hello
+add(num1,num2,sayHi);..........prints hi
+-> koi anonymous func bhi pass kar sakte hai
+
+-> iska use tabh hai jabh multiple functions banaye ho lekin call sirf thode ko hi karna hai unmein se....directly toh function call kar sakte hai but woh tabh jabh sirf
+ek hi function ho
+
+
+
+#####################
+ARRAY DESTRUCTURING
+
+let arr = ["neha",21,872638];
+//rather than writing arr[0],arr[1] etc
+
+let[name,age,phno] = arr;
+
+// humlog default values bhi de sakte hai
+let[name,age = 18,phno] = arr;.....toh agar array mein woh value nahi mila uss pos pe toh default value le lega
+
+//for nested array
+let arr = ["neha",21,872638,["rishin",22]];
+let[name,age,phno,[name2,age]]
+
+
+#########################
+OBJECT DESTRUCTURING
+let person={
+    name:"neha",
+    age:21,
+    occupation:"tycoon"
+}
+
+let{name:title,age,oc}=book;
+//name wale ko as title access kar sakte hai
+
+//default value
+let{name:title,age,oc="developer"}=book;
+
+//nested objects
+let person={
+    name:"neha",
+    age:21,
+    occupation:"tycoon",
+
+    publication : {
+        pub_name:"tech",
+        yr:2021
+    }
+};
+
+let{name:title,age,oc,pub:{n,y}}=book;
+
+
+##########################
+MODULES
+->export keyword se woh file ke andar ki cheezein dusre files use kar sakti hai aur jahan use karna hai wahan import likhna hai
+
+export let name = "neha";
+import { name } from './modules/user.js';
+console.log("neha");
+
+->{} in brackets ke andar , daal ke saari cheezein import bhi kar sakte hai aur export bhi
+
+-> import and export with a special name
+import{func1 as funky, name, age}
+toh func1 nahi funcky likhkr call hoga abh yeh function
+
+this renaming is important if functions with same name has to be imported then u rename the function
+
+
+-> agar poora file hi import karani ho 
+import * as some_name from 'path';
+some_name.functiona_name().......aise call karna hai phir
+
+-> defualt function
+export default function(){
+   console.log("hello");
+}
+
+export default functions ke naam nahi hote ..import karte time naam dena hota hai
+import {default as random}
+
+-> kisi ek file mein baaki files se codes collect karke collectively export also u can do
+export { circle } from ./jffk
+export {triangle } from ./hfkvk
+
+then in some other file  import { circle, traingle} from ./jddhgj
+
+
+
+######################
+OOPS
+
+-> 4 pillars ...encapsulation...abstraction...polymorphism........inheritance
+
+-> OOPS before ES6
+// creating an object
+let neha = {}; ......koi bhi variable ko aise {} mein daalne pe woh object ban jaata hai
+
+// object ki properties
+let person = {
+    firstname : 'neha',
+    lastname : 'ragesh',
+    // generally properties ke naam mein space allowed nahi hai lekin agar space chahiye toh usko '' mein daaldo
+    'age of person': 32
+    sayHi = function(){
+     alert("hi"+this.firstname+this["age of person"]);
+    }
+};
+
+//accessing the properties
+object_name.properties or object_name['property']...array otation is better
+
+// diff ways to create object
+
+-> let person = {};
+person.name="name";
+person.age = 21;
+person.last = function(){
+   alert("hello");
+}
+
+-> let person = new Object();
+
+
+//classes before ES6 were known as constructors
+
+function Person(first,last,a){
+  this.firstname = fisrt;
+  this.lastname = last;
+  this.age = age;
+  this.changeAge = function(newAge){
+      this.age = newAge;
+  }
+}
+
+let person1 = new Person("neha","ragesh"21);
+person1.changeAge(18);
+
+
+
+###################
+PROTOTYPE AND INHERITANCE
+
+-> jabh hum koi object banaye aise....let person = {}; ....woh as a prototype store hota hai
+-> hasOwnProperty is an inbuilt function which helps to know if a specific method is present inside the object or not
+   let person = {
+    name : "neha"
+};
+
+console.log(person.hasOwnProperty('name'));
+// returns true
+ yeh function is present inside the prototype
+ 
+-> jabh loi constructor use karke object banate hai toh 2 prototype banega...pehla woh constructor ka aur dusra woh object ka.....prototype chaining
+
+-> when in a constructor we define a method so internally that method gets copied to all the objects being created hence its better to attach the function(method) to the
+prototype instead
+function Person(first,last,a){
+    this.firstname = first;
+    this.lastname = last;
+    this.age = a;
+}
+
+Person.prototype.fullname = function(){
+    console.log(this.firstname+" "+this.lastname);
+}
+
+let person1 = new Person("neha","ragesh",21);
+let person2 = new Person("rishin","pandit",22);
+
+prototype object ke saath jaakr connect hota hai
+
+-> inheritance
+function Creature(ls){
+    this.lifespan = ls;
+}
+
+Creature.prototype.breathe =function(){
+    console.log("breathing");
+}
+
+let creature1 = new Creature(100);
+
+function Person(first,last,a){
+    this.firstname = first;
+    this.lastname = last;
+    this.age = a;
+}
+
+Person.prototype.fullname = function(){
+    console.log(this.firstname+" "+this.lastname);
+}
+
+Person.prototype.__proto__ = Object.create(Creature.prototype);
+
+let person1 = new Person("neha","ragesh",21);
+let person2 = new Person("rishin","pandit",22);
+
+console.log(person2.breathe());
+
+
+####################
+OOPS IN ES6
+
+class Person{
+    constructor(n,a){
+        this.name = n;
+        this.age = a;
+    }
+
+    sayHi(){
+        console.log("hello")
+    }
+}
+
+let person1 = new Person("rishin",22);
+let person2 = new Person("neha",21);
+person2.sayHi();
+
+-> in ES6 all methods by default are a part of prototype
+
+-> static methods ko call karne ke liye class_name.func_name();.......static keyword lagao infront of func to make them static...same rule with static variables
+
+-> inheritance in ES6....extends keyword
+class emp{
+    constructor(n){
+        this.name = n;
+    }
+    
+    func1(){
+    }
+}
+
+class manager extends emp{
+   constructor(p,d){
+        super(p);
+        this.department = d;
+   }
+   
+   func2(){
+   super.func1();..........to call method of parent class
+   }
+}
+
+let mng = new manager("neha","data scientist");
+
+
+// khud ke class ke andar ka kuch bhi call karna ho variable or method...this use karo ...parent class ke liye super
+
+// private karne ke liye variable ke pehle # lagao aur constructor banane se pehle usko # ke saath initiate bhi karo
+class emp{
+    #name = "";
+    constructor(n){
+       this.#name = n; 
+    }
+
+    getName(){
+        console.log(this.#name);
+    }
+    
+    #random{
+       console.log("private hai");
+    }
+    
+    result(){
+       this.#random();
+    }
+    
+    //private functions ko call karne ke liye ek function banakr uske through call karna padta hai
+}
+let emp1 = new emp("neha");
+
+-> koi bhi method ke peeche # lagane se private method bann jaega
+
+
+########################
+MIXIN
+-> used for multiple inheritance 
+
+let usefulMethod = {
+    sayHi(){
+        console.log("hi");
+    },
+    sayBye(){
+        console.log("bye");
+    }
+};
+
+
+class user{
+    constructor(){
+        this.name = "neha";
+    }
+}
+Object.assign(user.prototype,usefulMethod);
+// usefulMethod objects ke methods abh user mein aa gaye
+let usr1 = new user();
+
+
+
+#########################
+ARROW FUNCTION
+
+-> normal func
+
+function sum(a,b){
+   return a+b;
+}
+
+let sum = (a,b) => {
+   return a+b;
+}
+
+let random = () => Math.random();.......functions with no parameters
+document.addEventListener('click', () => console.log("clicked"));
+
+
+#########################
+MAP FUNCTION
+let arr = [2,3,4,5,6];
+let result = arr.map(function(val){
+    return val*3;
+});
+
+or
+
+let result = arr.map((val) => val*3);
+
+
+
+##########################
+FILTER FUNCTION
+let arr = [2,22,13,5,6,61,23,7];
+let arr1 = arr.filter(val => val > 10);
+console.log(arr1);
+
+// an array of objects 
+let team=[
+    {
+        name : "neha",
+        age : "21"
+    },
+    {
+        name : "ragesh",
+        age : "21"
+    },
+    {
+        name : "mini",
+        age : "23"
+    }
+];
+
+let dev = team.filter(val => val.age == "21");
+console.log(dev);
+
+
+#######################
+COOKIES
+
+document.cookie = "item:milk";
+document.cookie = "loc:india, expires = Sat, 20 Mar 2022 12:00:00 UTC";
+// waise hi domain ,path,secure properties bhi mention kar sakte hai
+
+-> deleting cookies mein expires wale property ko koi pehle date ka dedo
+
+
+#####################
+WEB STORAGE
+-> local and system storage
+-> just like cookies it stores the data in name-value pairs
+localStorage.setItem('firstname','neha');
+localStorage.getItem('firstname');
+localStorage.removeItem('firstname');
+
+->local ki jagah session likhne pe woh session storage ho jayega
+
+
+#####################
+JSON[JAVASCRIPT OBJECT NOTATION]
+->its a text format used for storage and transporting data
+->commonly used for API and config files
+-> JSON syntax is derived from the JS object notation syntax
+   data is in name/value pairs
+   data is seperated by commas
+   curly braces hold objects
+   square brackets hold the arrays
+  
+ex:  {
+           "name":"neha",
+           "age":21,
+           "lang":["java","python","js"]
+     }
+   
+-> JSON is language independent
+-> earlier XML was present than JSON
+
+// json mein sabh kuch "" inke andar hona chahiye...except boolean and null value
+{
+    "name":"vishwajeet",
+    "age":21,
+    "is_student":true,
+    "pass_no":null,
+    "p_lang":["java","python","c++","js"],
+    "address":{
+        "city":"Delhi",
+        "state":"delhi",
+        "pincode":110923
+    }
+}
+
+// array ke andar bhi objects daalke store kar sakte hai
+{
+    "students":[
+        {
+            "name":"neha",
+            "age":21
+        },
+        {
+            "name":"rishin",
+            "age":22
+        }
+    ]
+}
+
+// parsing data
+let data = {
+    "students":[
+        {
+            "name":"neha",
+            "age":21
+        },
+        {
+            "name":"rishin",
+            "age":22
+        }
+    ]
+}
+
+let dObject = JSON.parse(data);
+
+// how to send JSON data to server
+-> normal JS object banate samay key value agar string bhi ho toh "" iske andar daalne ki koi zarurat nahi but agar JSON object ho toh daalne ki zarurat hai sabko
+let student = {
+    name:"neha",
+    age:25,
+    city:"delhi"
+}
+
+let Jdata = JSON.stringify(student)
